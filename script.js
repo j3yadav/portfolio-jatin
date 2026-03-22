@@ -1,4 +1,4 @@
-﻿const portfolioData = {
+const portfolioData = {
   personal: {
     name: "Jatin Kumar",
     title: "Industrial Designer",
@@ -238,36 +238,42 @@ function buildProjectAction(project) {
   return action;
 }
 
-function buildProjectCard(project) {
-  const card = create("article", "project-card reveal visible");
-  const image = document.createElement("img");
-  image.src = project.image;
-  image.alt = project.title;
-  image.loading = "lazy";
-
-  const body = create("div", "project-body");
-  body.appendChild(create("h3", "", project.title));
-  body.appendChild(create("p", "", project.description));
-
-  const tags = create("div", "tag-list");
-  project.tags.forEach((tag) => tags.appendChild(create("span", "tag", tag)));
-  body.appendChild(tags);
-  body.appendChild(buildProjectAction(project));
-
-  card.appendChild(image);
-  card.appendChild(body);
-  return card;
-}
-
-function renderProjects(projects, source = "fallback") {
+function renderProjects() {
   const container = qs("#projects-grid");
+  if (!container) return;
   container.innerHTML = "";
-  projects.forEach((project) => container.appendChild(buildProjectCard(project)));
-
-  if (source === "sheet") {
-    updateProjectsStatus("Projects are syncing from Google Sheets and refresh automatically every 30 seconds.", "success");
-  } else {
-    updateProjectsStatus("Showing built-in project data. If you want live sync, keep the Google Sheet shared publicly.", "warning");
+  
+  if (typeof PROJECTS !== 'undefined') {
+    PROJECTS.forEach((proj, index) => {
+      const card = create("a", "project-card reveal visible");
+      card.href = `project.html#${encodeURIComponent(proj.id)}`;
+      card.target = "_blank";
+      card.rel = "noreferrer";
+      card.style.setProperty('--delay', `${index * 0.05}s`);
+      
+      const thumbSrc = proj.thumbnail ? proj.thumbnail : (proj.files.find(f => f.type === 'image')?.path ?? null);
+      const videos = proj.files.find(f => f.type === 'video');
+      
+      const header = create("div", "project-card-header");
+      header.appendChild(create("h3", "", proj.title));
+      
+      const visual = create("div", "project-card-visual");
+      if (thumbSrc) {
+        const image = create("img");
+        image.src = thumbSrc;
+        image.alt = proj.title;
+        image.loading = "lazy";
+        visual.appendChild(image);
+      } else {
+         const placeholder = create("div", "minimal-card-placeholder");
+         placeholder.innerHTML = `<span class="placeholder-icon">${videos ? '🎬' : '📁'}</span>`;
+         visual.appendChild(placeholder);
+      }
+      
+      card.appendChild(header);
+      card.appendChild(visual);
+      container.appendChild(card);
+    });
   }
 }
 
@@ -449,9 +455,7 @@ function init() {
   renderSkills();
   renderExperience();
   renderEducation();
-  renderProjects(portfolioData.projects, "fallback");
-  syncProjectsFromSheet();
-  window.setInterval(syncProjectsFromSheet, SHEET_CONFIG.refreshMs);
+  renderProjects();
   renderArt();
   renderHobbies();
   renderResume();
