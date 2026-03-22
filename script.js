@@ -100,14 +100,14 @@ const portfolioData = {
     ]
   },
   artworks: [
-    { src: "./public/projects/sketches/girl sketch.png", title: "Girl Portrait" },
-    { src: "./public/projects/sketches/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
-    { src: "./public/projects/sketches/premanand ji sketch.png", title: "Premanand Ji Portrait" },
-    { src: "./public/projects/sketches/rahul sir sketch.png", title: "Rahul Sir Portrait" },
-    { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
-    { src: "./public/projects/digital sketches/SDEE CARTOON1.png", title: "SDEE Cartoon" },
-    { src: "./public/projects/digital sketches/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
-    { src: "./public/projects/digital sketches/bathroom brush.png", title: "Bathroom Brush" }
+    { src: "./public/portraits/girl sketch.png", title: "Girl Portrait" },
+    { src: "./public/portraits/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
+    { src: "./public/portraits/premanand ji sketch.png", title: "Premanand Ji Portrait" },
+    { src: "./public/portraits/rahul sir sketch.png", title: "Rahul Sir Portrait" },
+    { src: "./public/portraits/william defoe.png", title: "William Defoe Portrait" },
+    { src: "./public/portraits/SDEE CARTOON1.png", title: "SDEE Cartoon" },
+    { src: "./public/portraits/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
+    { src: "./public/portraits/bathroom brush.png", title: "Bathroom Brush" }
   ],
   footer: {
     copyright: "© 2026 John Doe. All rights reserved.",
