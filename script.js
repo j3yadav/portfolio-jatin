@@ -1,4 +1,4 @@
-const portfolioData = {
+﻿const portfolioData = {
   personal: {
     name: "Jatin Kumar",
     title: "Industrial Designer",
@@ -100,7 +100,7 @@ const portfolioData = {
   },
   artworkCount: 8,
   footer: {
-    copyright: "� 2026 John Doe. All rights reserved.",
+    copyright: "© 2026 John Doe. All rights reserved.",
     builtWith: "Built with plain HTML, CSS, and JavaScript"
   }
 };
@@ -463,6 +463,7 @@ function init() {
 }
 
 init();
+
 
 
 
