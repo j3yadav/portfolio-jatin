@@ -361,10 +361,10 @@ function renderHobbies() {
 }
 
 function renderResume() {
-  qs("#resume-summary").textContent = portfolioData.resume.summary;
-  qs("#resume-link").href = portfolioData.personal.resumeUrl || "#";
-  const list = qs("#achievement-list");
-  portfolioData.resume.achievements.forEach((item) => list.appendChild(create("li", "", item)));
+  const resumeLink = qs("#resume-link");
+  if (resumeLink) {
+    resumeLink.href = portfolioData.personal.resumeUrl || "#";
+  }
 }
 
 function renderContact() {
