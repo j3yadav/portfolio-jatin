@@ -416,10 +416,10 @@ function renderResume() {
 function renderContact() {
   const container = qs("#contact-actions");
   [
-    { label: "Email Me", href: "mailto:jatinkumar_24bd048@gmail.com", className: "contact-link primary" },
-    { label: "WhatsApp", href: "https://wa.me/918053046168", className: "contact-link" },
-    { label: "Phone", href: "javascript:void(0)", className: "contact-link", copyText: "+91 8685862460" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/jatin-kumar030051611", className: "contact-link" }
+    { label: "Email Me", href: "mailto:jatinkumar_24bd048@gmail.com", className: "button button-primary" },
+    { label: "WhatsApp", href: "https://wa.me/918053046168", className: "button button-primary" },
+    { label: "Phone", href: "javascript:void(0)", className: "button button-primary", copyText: "+91 8685862460" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/jatin-kumar030051611", className: "button button-primary" }
   ].forEach((item) => {
     const link = create("a", item.className, item.label);
     link.href = normalizeLink(item.href);
