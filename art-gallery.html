@@ -81,14 +81,6 @@
     .gallery-frame:hover img {
       transform: scale(1.03);
     }
-    .gallery-frame .frame-title {
-      text-align: center;
-      padding: 8px 4px 2px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 0.8rem;
-      color: rgba(255,231,215,0.5);
-      letter-spacing: 0.02em;
-    }
     .back-link {
       display: inline-block;
       margin-top: 3rem;
@@ -170,12 +162,7 @@
       img.alt = art.title;
       img.loading = 'lazy';
 
-      const title = document.createElement('div');
-      title.className = 'frame-title';
-      title.textContent = art.title;
-
       frame.appendChild(img);
-      frame.appendChild(title);
 
       frame.addEventListener('click', () => {
         lbImg.src = art.src;
