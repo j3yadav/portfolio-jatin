@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Doe | Portfolio</title>
+  <meta name="description" content="Portfolio website for John Doe, full stack developer and creative designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar" id="topbar">
+      <div class="container topbar-inner">
+                <button class="brand" type="button" data-scroll-target="about" aria-label="Go to about section">
+          <img class="brand-logo" src="./logo.png" alt="Jatin Kumar logo">
+          <img class="brand-wordmark" id="brand-text" src="./logo font.png" alt="Jatin Kumar wordmark">
+        </button>
+        <nav class="nav desktop-nav" aria-label="Main navigation">
+          <button class="nav-link active" type="button" data-scroll-target="about">About</button>
+          <button class="nav-link" type="button" data-scroll-target="projects">Work</button>
+          <button class="nav-link" type="button" data-scroll-target="portraits">Art</button>
+          <button class="nav-link" type="button" data-scroll-target="resume">Resume</button>
+          <button class="nav-link" type="button" data-scroll-target="contact">Contact</button>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <button class="mobile-nav-link" type="button" data-scroll-target="about">About</button>
+        <button class="mobile-nav-link" type="button" data-scroll-target="projects">Work</button>
+        <button class="mobile-nav-link" type="button" data-scroll-target="portraits">Portraits &amp; Illustrations</button>
+        <button class="mobile-nav-link" type="button" data-scroll-target="resume">Resume</button>
+        <button class="mobile-nav-link" type="button" data-scroll-target="contact">Contact</button>
+      </nav>
+    </header>
+    <main>
+      <section class="hero section" id="about">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow" id="hero-tagline">Welcome to my portfolio</p>
+            <h1 class="hero-title">Hi, I'm <span id="hero-name">John Doe</span></h1>
+            <p class="hero-subtitle" id="hero-title">Full Stack Developer &amp; Creative Designer</p>
+            <div class="hero-bio" id="hero-bio"></div>
+          </div>
+          <div class="hero-visual reveal">
+            <div class="portrait-frame">
+              <img id="profile-image" src="" alt="Profile portrait">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section-muted" id="skills">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Capabilities</p>
+            <h2>Skills &amp; Proficiency</h2>
+          </div>
+          <div class="skills-shell" id="skills-grid"></div>
+        </div>
+      </section>
+      <section class="section" id="experience">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Journey</p>
+            <h2>Work Experience</h2>
+          </div>
+          <div class="timeline" id="experience-list"></div>
+        </div>
+      </section>
+      <section class="section section-muted" id="education">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Learning</p>
+            <h2>Education</h2>
+          </div>
+          <div class="stack-list" id="education-list"></div>
+        </div>
+      </section>
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Selected Work</p>
+            <h2>Featured Projects</h2>
+            <p class="section-copy projects-status" id="projects-status">Loading latest projects from Google Sheets...</p>
+          </div>
+          <div class="project-grid" id="projects-grid"></div>
+          <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+            <a class="button button-primary" href="projects-gallery.html" target="_blank" rel="noreferrer" id="view-all-projects">
+              View All Projects ↗
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section section-muted" id="portraits">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Creative Side</p>
+            <h2>Portraits &amp; Illustrations</h2>
+            <p class="section-copy">In my spare time, I create digital art, portraits, and illustrations. Here are some recent works.</p>
+          </div>
+          <div class="art-grid" id="art-grid"></div>
+        </div>
+      </section>
+      <section class="section" id="hobbies">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Off The Clock</p>
+            <h2>Hobbies &amp; Interests</h2>
+          </div>
+          <div class="card-grid hobbies-grid" id="hobbies-grid"></div>
+        </div>
+      </section>
+            <section class="section section-muted" id="resume">
+        <div class="container container-narrow">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">Resume</p>
+            <h2>Professional Snapshot</h2>
+            <p class="section-copy">Download my resume to learn more about my professional experience, skills, and qualifications.</p>
+            <a class="button button-primary" id="resume-link" href="#" target="_blank" rel="noreferrer">Download Resume (PDF)</a>
+          </div>
+          <div class="two-up">
+            <article class="panel reveal">
+              <h3>Professional Summary</h3>
+              <p id="resume-summary"></p>
+            </article>
+            <article class="panel reveal">
+              <h3>Key Achievements</h3>
+              <ul class="achievement-list" id="achievement-list"></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="contact">
+        <div class="container container-narrow">
+          <div class="section-heading centered reveal">
+            <p class="section-kicker">Contact</p>
+            <h2>Get In Touch</h2>
+            <p class="section-copy">I'm always open to new opportunities and collaborations. Feel free to reach out.</p>
+          </div>
+          <div class="contact-actions reveal" id="contact-actions"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p id="footer-copy"></p>
+        <p class="footer-note" id="footer-note"></p>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

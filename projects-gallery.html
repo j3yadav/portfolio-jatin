@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | Portfolio</title>
+  <meta name="description" content="Browse all creative projects — 3D modeling, animation, product design, sketches, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="gallery-styles.css">
+</head>
+<body>
+  <header class="gallery-topbar">
+    <div class="container gallery-topbar-inner">
+      <a class="brand" href="index.html" aria-label="Back to portfolio">
+        <img class="brand-logo" src="./logo.png" alt="Logo">
+        <img class="brand-wordmark" src="./logo font.png" alt="Logo wordmark">
+      </a>
+      <h1 class="gallery-page-title">All Projects</h1>
+    </div>
+  </header>
+
+  <main class="gallery-main">
+    <div class="container">
+      <div class="gallery-intro">
+        <p class="gallery-kicker">Portfolio</p>
+        <h2 class="gallery-heading">Explore My Work</h2>
+        <p class="gallery-subtitle">Click any project to view all its content — images, videos, presentations, and more.</p>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </main>
+
+  <footer class="gallery-footer">
+    <div class="container">
+      <p>&copy; 2026 Jatin Kumar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="projects-data.js"></script>
+  <script>
+    /* ── Build gallery cards ── */
+    const grid = document.getElementById('gallery-grid');
+
+    /* helper: count displayable files */
+    function countByType(files, type) {
+      return files.filter(f => f.type === type).length;
+    }
+
+    PROJECTS.forEach((proj, index) => {
+      const images = countByType(proj.files, 'image');
+      const videos = countByType(proj.files, 'video');
+      const pdfs   = countByType(proj.files, 'pdf');
+      const others = countByType(proj.files, 'other');
+
+      /* Build badge markup */
+      let badges = '';
+      if (images) badges += `<span class="badge badge-img">🖼 ${images}</span>`;
+      if (videos) badges += `<span class="badge badge-vid">▶ ${videos}</span>`;
+      if (pdfs)   badges += `<span class="badge badge-pdf">📄 ${pdfs}</span>`;
+      if (others) badges += `<span class="badge badge-other">📦 ${others}</span>`;
+
+      /* Thumbnail or placeholder */
+      const thumbSrc = proj.thumbnail
+        ? proj.thumbnail
+        : (proj.files.find(f => f.type === 'image')?.path ?? null);
+
+      const thumbHTML = thumbSrc
+        ? `<img class="card-thumb" src="${thumbSrc}" alt="${proj.title} thumbnail" loading="lazy">`
+        : `<div class="card-thumb card-thumb-placeholder">
+             <span class="placeholder-icon">${videos ? '🎬' : '📁'}</span>
+           </div>`;
+
+      const card = document.createElement('a');
+      card.className = 'gallery-card';
+      card.href = `project.html#${encodeURIComponent(proj.id)}`;
+      card.target = '_blank';
+      card.rel = 'noreferrer';
+      card.style.setProperty('--delay', `${index * 0.06}s`);
+      card.innerHTML = `
+        <div class="card-visual">
+          ${thumbHTML}
+          <div class="card-overlay">
+            <span class="card-open-label">Open Project ↗</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${proj.title}</h3>
+          <p class="card-desc">${proj.description}</p>
+          <div class="badge-row">${badges}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+/* ─────────────────────────────────────────────
+   project-styles.css — Individual project viewer
+   ───────────────────────────────────────────── */
+
+:root {
+  --bg: #120c08;
+  --bg-soft: #1f140d;
+  --panel: rgba(31, 20, 13, 0.82);
+  --text: #fff4ec;
+  --muted: #d0b3a2;
+  --border: rgba(249, 101, 0, 0.2);
+  --accent: #f96500;
+  --accent-soft: #ff8f3a;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+  --radius: 22px;
+  --container: 1200px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Outfit", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(249, 101, 0, 0.12), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255, 143, 58, 0.08), transparent 30%),
+    linear-gradient(180deg, #090604, #120c08 54%, #1a110a);
+  min-height: 100vh;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+.container {
+  width: min(calc(100% - 2rem), var(--container));
+  margin: 0 auto;
+}
+
+/* ── Top bar ── */
+.pv-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(16px);
+  background: rgba(12, 8, 5, 0.88);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pv-topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 64px;
+}
+
+.pv-back {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.pv-back:hover {
+  background: rgba(249, 101, 0, 0.1);
+  transform: translateX(-2px);
+}
+
+.pv-page-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Hero section ── */
+.pv-hero {
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
+}
+
+.pv-kicker {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.pv-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.pv-desc {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 60ch;
+  margin: 0 auto 1.5rem;
+  line-height: 1.65;
+}
+
+.pv-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pv-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(249, 101, 0, 0.08);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: #ffe3cf;
+}
+
+.pv-stat-icon {
+  font-size: 1.1rem;
+}
+
+/* ── Content sections ── */
+.pv-main {
+  padding-bottom: 4rem;
+}
+
+.pv-section {
+  margin-bottom: 3rem;
+}
+
+.pv-section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  color: var(--accent-soft);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pv-section-icon {
+  font-size: 1.2rem;
+}
+
+/* ── Image grid ── */
+.pv-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.pv-img-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pv-img-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(249, 101, 0, 0.12);
+}
+
+.pv-img-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pv-img-card:hover img {
+  transform: scale(1.05);
+}
+
+.pv-img-label {
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Video cards ── */
+.pv-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.pv-video-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.pv-video-card video {
+  width: 100%;
+  display: block;
+  background: #000;
+}
+
+.pv-video-label {
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* ── PDF cards ── */
+.pv-pdf-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.pv-pdf-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.pv-pdf-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 65vh;
+  border: none;
+  background: #222;
+  display: block;
+}
+
+.pv-pdf-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.pv-pdf-name {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.pv-pdf-download {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.pv-pdf-download:hover {
+  background: rgba(249, 101, 0, 0.1);
+}
+
+/* ── Download cards (other files) ── */
+.pv-download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.pv-download-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.pv-download-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(249, 101, 0, 0.45);
+}
+
+.pv-dl-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pv-dl-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pv-dl-name {
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pv-dl-ext {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+.pv-dl-btn {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.pv-dl-btn:hover {
+  background: rgba(249, 101, 0, 0.1);
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(9, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: lb-in 0.3s ease;
+}
+
+@keyframes lb-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(249, 101, 0, 0.2);
+  transform: scale(1.08);
+}
+
+.lightbox-close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-prev:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-next:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 0.92rem;
+  background: rgba(18, 12, 8, 0.8);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ── Empty state ── */
+.pv-empty {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.pv-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.pv-empty h2 {
+  font-family: "Space Grotesk", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.pv-empty p {
+  color: var(--muted);
+}
+
+.pv-empty a {
+  display: inline-flex;
+  margin-top: 1.5rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Footer ── */
+.pv-footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .pv-topbar-inner {
+    gap: 0.8rem;
+    min-height: 56px;
+  }
+
+  .pv-hero {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .pv-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pv-video-grid,
+  .pv-pdf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-pdf-card iframe {
+    height: 320px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .pv-image-grid {
+    grid-template-columns: 1fr;
+  }
+}

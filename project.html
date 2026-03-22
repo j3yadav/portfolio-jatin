@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Viewer | Portfolio</title>
+  <meta name="description" content="View project content — images, videos, presentations, and design files.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="project-styles.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="pv-topbar">
+    <div class="container pv-topbar-inner">
+      <a class="pv-back" href="projects-gallery.html" title="Back to gallery">← All Projects</a>
+      <h1 class="pv-page-title" id="pv-title">Loading…</h1>
+    </div>
+  </header>
+
+  <!-- Hero banner -->
+  <section class="pv-hero" id="pv-hero">
+    <div class="container">
+      <p class="pv-kicker" id="pv-kicker"></p>
+      <h2 class="pv-heading" id="pv-heading"></h2>
+      <p class="pv-desc" id="pv-desc"></p>
+      <div class="pv-stats" id="pv-stats"></div>
+    </div>
+  </section>
+
+  <!-- Content sections injected by JS -->
+  <main class="pv-main" id="pv-main">
+    <div class="container" id="pv-content"></div>
+  </main>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Full-size image">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <footer class="pv-footer">
+    <div class="container">
+      <p>&copy; 2026 Jatin Kumar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="projects-data.js"></script>
+  <script src="project-viewer.js"></script>
+</body>
+</html>

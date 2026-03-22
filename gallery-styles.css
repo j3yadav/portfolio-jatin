@@ -1,0 +1,284 @@
+/* ─────────────────────────────────────────────
+   gallery-styles.css — Project gallery page
+   ───────────────────────────────────────────── */
+
+/* ── Variables (shared with main site) ── */
+:root {
+  --bg: #120c08;
+  --bg-soft: #1f140d;
+  --panel: rgba(31, 20, 13, 0.82);
+  --text: #fff4ec;
+  --muted: #d0b3a2;
+  --border: rgba(249, 101, 0, 0.2);
+  --accent: #f96500;
+  --accent-soft: #ff8f3a;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+  --radius: 22px;
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Outfit", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(249, 101, 0, 0.15), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255, 143, 58, 0.1), transparent 30%),
+    linear-gradient(180deg, #090604 0%, #120c08 54%, #1a110a 100%);
+  min-height: 100vh;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(calc(100% - 2rem), var(--container));
+  margin: 0 auto;
+}
+
+/* ── Top bar ── */
+.gallery-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(16px);
+  background: rgba(12, 8, 5, 0.88);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.brand-wordmark {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.gallery-page-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+/* ── Intro ── */
+.gallery-intro {
+  text-align: center;
+  padding: 4.5rem 0 3rem;
+}
+
+.gallery-kicker {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.gallery-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin-bottom: 0.8rem;
+}
+
+.gallery-subtitle {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 52ch;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Card grid ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+/* ── Individual card ── */
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: card-in 0.5s ease both;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(249, 101, 0, 0.55);
+  box-shadow: 0 28px 56px rgba(249, 101, 0, 0.14), 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+/* Card visual */
+.card-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.card-thumb {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.gallery-card:hover .card-thumb {
+  transform: scale(1.06);
+}
+
+.card-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(249, 101, 0, 0.08), rgba(255, 143, 58, 0.05));
+}
+
+.placeholder-icon {
+  font-size: 3.5rem;
+  opacity: 0.6;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 12, 8, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-open-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-soft);
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+/* Card body */
+.card-body {
+  padding: 1.35rem 1.4rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: rgba(249, 101, 0, 0.1);
+  color: #ffe3cf;
+}
+
+.badge-vid { background: rgba(100, 180, 255, 0.1); color: #a8d4ff; }
+.badge-pdf { background: rgba(255, 100, 100, 0.1); color: #ffb8b8; }
+.badge-other { background: rgba(160, 160, 160, 0.1); color: #d0d0d0; }
+
+/* ── Footer ── */
+.gallery-footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-topbar-inner {
+    flex-direction: column;
+    gap: 0.3rem;
+    min-height: auto;
+    padding: 0.6rem 0;
+  }
+
+  .gallery-intro {
+    padding: 3rem 0 2rem;
+  }
+
+  .card-thumb,
+  .card-thumb-placeholder {
+    height: 180px;
+  }
+}

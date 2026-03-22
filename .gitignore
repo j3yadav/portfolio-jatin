@@ -1,0 +1,17 @@
+# Large files exceeding GitHub's 100MB limit (or Git LFS 1GB quota limit overall)
+public/projects/bashoda product/BASHODA PPT.pdf
+public/projects/bashoda product/design and people final .blend
+public/projects/bashoda product/r2.png
+public/projects/bashoda product/r3.png
+public/projects/bashoda product/r18.png
+public/projects/bashoda product/r19.png
+public/projects/short film sem 3 photography and videography/short film final.mp4
+public/projects/dp 2/dp 2 ppt.pdf
+public/projects/dmm final project/all/brush holder with material.blend
+
+# Entire folder excluded — filenames contain brackets that break gitignore patterns
+public/projects/dp 1/all data/
+
+# Blender backup files
+*.blend1
+
