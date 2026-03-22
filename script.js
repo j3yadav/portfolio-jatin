@@ -18,15 +18,16 @@ const portfolioData = {
     phone: "tel:+918685862460"
   },
   skills: [
-    { name: "Adobe Photoshop", icon: "photoshop" },
-    { name: "Adobe Illustrator", icon: "illustrator" },
-    { name: "Adobe Premiere Pro", icon: "premierepro", image: "./premier pro.jpg" },
-    { name: "Adobe After Effects", icon: "aftereffects" },
-    { name: "Blender", icon: "blender", image: "./blender.png" },
-    { name: "Rhino 8", icon: "rhino8", image: "./rhino 8.png" },
-    { name: "AutoCAD", icon: "autocad", image: "./auto cad.png" },
-    { name: "SolidWorks", icon: "solidworks", image: "./solid works.png" },
-    { name: "Figma", icon: "figma" }
+    { name: "Adobe Photoshop", image: "public/icons/photoshop.png" },
+    { name: "Adobe Illustrator", image: "public/icons/illustrator.png" },
+    { name: "Adobe InDesign", image: "public/icons/indesign.png" },
+    { name: "Adobe Premiere Pro", image: "public/icons/premiere.png" },
+    { name: "Adobe After Effects", image: "public/icons/after effects.png" },
+    { name: "Blender", image: "public/icons/blender.png" },
+    { name: "Rhino 8", image: "public/icons/rhino 8.webp" },
+    { name: "AutoCAD", image: "public/icons/autocad.png" },
+    { name: "SolidWorks", image: "public/icons/solid works.png" },
+    { name: "Figma", image: "public/icons/figma.png" }
   ],
   experience: [
     {
@@ -175,9 +176,18 @@ function buildSkillItem(skill) {
   item.setAttribute("aria-label", skill.name);
   item.setAttribute("title", skill.name);
 
-  const icon = create("div", "skill-icon-wrap");
-  icon.innerHTML = skillIconMarkup(skill.icon);
-  item.appendChild(icon);
+  const iconWrap = create("div", "skill-icon-wrap");
+  
+  if (skill.image) {
+    const img = create("img", "skill-icon-image");
+    img.src = skill.image;
+    img.alt = skill.name;
+    iconWrap.appendChild(img);
+  } else {
+    iconWrap.innerHTML = skillIconMarkup(skill.icon);
+  }
+  
+  item.appendChild(iconWrap);
   return item;
 }
 
