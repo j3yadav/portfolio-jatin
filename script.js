@@ -110,7 +110,7 @@ const portfolioData = {
     { src: "./public/portraits/bathroom brush.png", title: "Bathroom Brush" }
   ],
   footer: {
-    copyright: "© 2026 John Doe. All rights reserved.",
+    copyright: "© 2026 Jatin Kumar. All rights reserved.",
     builtWith: "Built with plain HTML, CSS, and JavaScript"
   }
 };
