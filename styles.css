@@ -112,6 +112,7 @@ button { font: inherit; }
 .art-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2rem; }
 .skill-card, .education-card, .project-card, .panel, .hobby-card, .art-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); box-shadow: var(--shadow); }
+
 .skill-card, .education-card, .panel, .hobby-card { padding: 1.5rem; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
 .tag { display: inline-flex; padding: 0.45rem 0.75rem; border-radius: 999px; background: rgba(249, 101, 0, 0.1); color: #ffe3cf; font-size: 0.92rem; }
@@ -655,7 +656,6 @@ button { font: inherit; }
   position: relative;
   overflow: hidden;
   padding: 0.85rem 0;
-  border-radius: 999px;
 }
 
 .skills-marquee::before,
@@ -749,11 +749,11 @@ button { font: inherit; }
 
 @keyframes skill-marquee {
   from {
-    transform: translateX(0);
+    transform: translateX(calc(-50% - 0.55rem));
   }
 
   to {
-    transform: translateX(calc(-50% - 0.55rem));
+    transform: translateX(0);
   }
 }
 
