@@ -161,7 +161,6 @@ function renderHero() {
   }
   qs("#hero-tagline").textContent = portfolioData.personal.tagline;
   qs("#hero-name").textContent = portfolioData.personal.name;
-  qs("#hero-title").textContent = portfolioData.personal.title;
   qs("#profile-image").src = portfolioData.personal.profileImage;
   qs("#profile-image").alt = `${portfolioData.personal.name} profile portrait`;
 
