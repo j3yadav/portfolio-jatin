@@ -101,6 +101,7 @@ const portfolioData = {
   artworks: [
     { src: "./public/projects/sketches/girl sketch.png", title: "Girl Portrait" },
     { src: "./public/projects/sketches/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
+    { src: "./public/projects/sketches/premanand ji sketch.png", title: "Premanand Ji Portrait" },
     { src: "./public/projects/sketches/rahul sir sketch.png", title: "Rahul Sir Portrait" },
     { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
     { src: "./public/projects/sketches/girl sketch 1.png", title: "Girl Portrait II" }
