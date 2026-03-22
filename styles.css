@@ -682,10 +682,15 @@ button { font: inherit; }
 .skills-track {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
   width: max-content;
   animation: skill-marquee 36s linear infinite;
   will-change: transform;
+}
+
+.skills-row {
+  display: flex;
+  gap: 1.1rem;
+  padding-right: 1.1rem;
 }
 
 .skills-marquee:hover .skills-track {
@@ -749,7 +754,7 @@ button { font: inherit; }
 
 @keyframes skill-marquee {
   from {
-    transform: translateX(calc(-50% - 0.55rem));
+    transform: translateX(calc(-100% / 6));
   }
 
   to {
@@ -767,8 +772,12 @@ button { font: inherit; }
     width: 40px;
   }
 
-  .skills-track {
+  .skills-row {
     gap: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .skills-track {
     animation-duration: 30s;
   }
 

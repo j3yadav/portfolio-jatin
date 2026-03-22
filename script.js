@@ -199,8 +199,14 @@ function renderSkills() {
   const viewport = create("div", "skills-marquee");
   const track = create("div", "skills-track");
 
-  const loopSkills = [...portfolioData.skills, ...portfolioData.skills];
-  loopSkills.forEach((skill) => track.appendChild(buildSkillItem(skill)));
+  // Create 6 identical rows for ultra-wide screen seamless looping
+  for (let i = 0; i < 6; i++) {
+    const row = create("div", "skills-row");
+    portfolioData.skills.forEach((skill) => {
+      row.appendChild(buildSkillItem(skill));
+    });
+    track.appendChild(row);
+  }
 
   viewport.appendChild(track);
   panel.appendChild(viewport);
