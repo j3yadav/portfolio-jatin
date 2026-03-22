@@ -98,7 +98,12 @@ const portfolioData = {
       "Contributed to 15+ open-source projects"
     ]
   },
-  artworkCount: 8,
+  artworks: [
+    "./public/portraits/art1.png",
+    "./public/portraits/art2.png",
+    "./public/portraits/art3.png",
+    "./public/portraits/art4.png"
+  ],
   footer: {
     copyright: "© 2026 John Doe. All rights reserved.",
     builtWith: "Built with plain HTML, CSS, and JavaScript"
@@ -344,8 +349,45 @@ async function syncProjectsFromSheet() {
 
 function renderArt() {
   const container = qs("#art-grid");
-  Array.from({ length: portfolioData.artworkCount }, (_, index) => index + 1).forEach((item) => {
-    container.appendChild(create("article", "art-card reveal", `Artwork ${item}`));
+  if (!container) return;
+  container.innerHTML = "";
+  
+  // Create Lightbox container safely
+  let lightbox = qs("#lightbox-modal");
+  if (!lightbox) {
+    lightbox = create("div", "lightbox");
+    lightbox.id = "lightbox-modal";
+    const closeBtn = create("button", "lightbox-close", "×");
+    const imgEl = create("img");
+    lightbox.appendChild(closeBtn);
+    lightbox.appendChild(imgEl);
+    document.body.appendChild(lightbox);
+    
+    // Lightbox close logic
+    const close = () => lightbox.classList.remove("active");
+    closeBtn.addEventListener("click", close);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target !== imgEl) close();
+    });
+  }
+
+  const lightboxImg = lightbox.querySelector("img");
+
+  portfolioData.artworks.forEach((src, index) => {
+    const card = create("article", "art-card reveal visible");
+    const img = create("img");
+    img.src = src;
+    img.alt = `Portrait or Illustration ${index + 1}`;
+    img.loading = "lazy";
+    
+    card.appendChild(img);
+    
+    card.addEventListener("click", () => {
+      lightboxImg.src = src;
+      lightbox.classList.add("active");
+    });
+    
+    container.appendChild(card);
   });
 }
 
