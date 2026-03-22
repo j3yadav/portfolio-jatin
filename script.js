@@ -106,9 +106,7 @@ const portfolioData = {
     { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
     { src: "./public/projects/digital sketches/SDEE CARTOON1.png", title: "SDEE Cartoon" },
     { src: "./public/projects/digital sketches/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
-    { src: "./public/projects/digital sketches/bathroom brush.png", title: "Bathroom Brush" },
-    { src: "./public/projects/digital sketches/drill.png", title: "Drill" },
-    { src: "./public/projects/digital sketches/hairdryer.jpg", title: "Hairdryer" }
+    { src: "./public/projects/digital sketches/bathroom brush.png", title: "Bathroom Brush" }
   ],
   footer: {
     copyright: "© 2026 John Doe. All rights reserved.",

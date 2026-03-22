@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portraits & Illustrations — Jatin Kumar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .gallery-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+    .gallery-header h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.5rem;
+      color: #ffe7d7;
+      margin-bottom: 0.5rem;
+    }
+    .gallery-header p {
+      color: rgba(255,231,215,0.6);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .gallery-wall {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.8rem;
+    }
+    .gallery-frame {
+      display: inline-block;
+      width: fit-content;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: zoom-in;
+      background: #1a1410;
+      padding: 8px;
+      border: 2px solid #2a2018;
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.5),
+        0 12px 40px rgba(0,0,0,0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+    .gallery-frame::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(255, 200, 150, 0.07);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .gallery-frame:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow:
+        0 8px 30px rgba(0,0,0,0.6),
+        0 20px 50px rgba(0,0,0,0.35),
+        0 0 25px rgba(255, 143, 58, 0.08);
+      border-color: #3a2c1e;
+    }
+    .gallery-frame img {
+      display: block;
+      max-height: 380px;
+      width: auto;
+      height: auto;
+      border-radius: 2px;
+      transition: transform 0.6s ease;
+    }
+    .gallery-frame:hover img {
+      transform: scale(1.03);
+    }
+    .gallery-frame .frame-title {
+      text-align: center;
+      padding: 8px 4px 2px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,231,215,0.5);
+      letter-spacing: 0.02em;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 3rem;
+      text-align: center;
+      width: 100%;
+      padding-bottom: 3rem;
+    }
+    .back-link a {
+      color: #ff8f3a;
+      text-decoration: none;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+    .back-link a:hover { opacity: 0.7; }
+
+    /* Lightbox */
+    .lb { position: fixed; inset: 0; background: rgba(10,6,4,0.95); backdrop-filter: blur(12px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .lb.active { opacity: 1; pointer-events: auto; }
+    .lb img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .lb.active img { transform: scale(1); }
+    .lb-close { position: absolute; top: 2rem; right: 3rem; color: #fff; font-size: 3rem; cursor: pointer; background: transparent; border: none; opacity: 0.6; transition: opacity 0.2s; padding: 1rem; }
+    .lb-close:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .gallery-frame img { max-height: 260px; }
+      .gallery-header h1 { font-size: 1.8rem; }
+    }
+    @media (max-width: 480px) {
+      .gallery-frame img { max-height: 200px; }
+      .gallery-wall { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-header">
+    <h1>Portraits & Illustrations</h1>
+    <p>A curated collection of my hand-drawn portraits, digital illustrations, and product sketches.</p>
+  </div>
+
+  <div class="gallery-container">
+    <div class="gallery-wall" id="gallery-wall"></div>
+    <div class="back-link">
+      <a href="index.html">← Back to Portfolio</a>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb">
+    <button class="lb-close" id="lb-close">×</button>
+    <img id="lb-img" src="" alt="Full view">
+  </div>
+
+  <script>
+    const ALL_ARTWORKS = [
+      { src: "./public/projects/sketches/girl sketch.png", title: "Girl Portrait" },
+      { src: "./public/projects/sketches/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
+      { src: "./public/projects/sketches/premanand ji sketch.png", title: "Premanand Ji Portrait" },
+      { src: "./public/projects/sketches/rahul sir sketch.png", title: "Rahul Sir Portrait" },
+      { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
+      { src: "./public/projects/digital sketches/SDEE CARTOON1.png", title: "SDEE Cartoon" },
+      { src: "./public/projects/digital sketches/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
+      { src: "./public/projects/digital sketches/bathroom brush.png", title: "Bathroom Brush" },
+      { src: "./public/projects/digital sketches/drill.png", title: "Drill" },
+      { src: "./public/projects/digital sketches/hairdryer.jpg", title: "Hairdryer" }
+    ];
+
+    const wall = document.getElementById('gallery-wall');
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+
+    ALL_ARTWORKS.forEach(art => {
+      const frame = document.createElement('div');
+      frame.className = 'gallery-frame';
+
+      const img = document.createElement('img');
+      img.src = art.src;
+      img.alt = art.title;
+      img.loading = 'lazy';
+
+      const title = document.createElement('div');
+      title.className = 'frame-title';
+      title.textContent = art.title;
+
+      frame.appendChild(img);
+      frame.appendChild(title);
+
+      frame.addEventListener('click', () => {
+        lbImg.src = art.src;
+        lb.classList.add('active');
+      });
+
+      wall.appendChild(frame);
+    });
+
+    // Lightbox close
+    const closeLb = () => lb.classList.remove('active');
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', (e) => { if (e.target !== lbImg) closeLb(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+  </script>
+</body>
+</html>
