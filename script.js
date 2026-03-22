@@ -8,7 +8,7 @@ const portfolioData = {
     ],
     profileImage: "./jatin.png",
     email: "john.doe@example.com",
-    resumeUrl: "#"
+    resumeUrl: "https://drive.google.com/file/d/1a6pXT58aY2wYgQ8AFj8gfCgw7V39KrZa/view?usp=sharing"
   },
   logo: { text: "Your Logo" },
   socials: {
