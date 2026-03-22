@@ -416,9 +416,10 @@ function renderResume() {
 function renderContact() {
   const container = qs("#contact-actions");
   [
-    { label: "Email Me", href: portfolioData.socials.email || `mailto:${portfolioData.personal.email}`, className: "contact-link primary" },
-    { label: "+91 8685862460", href: portfolioData.socials.phone, className: "contact-link" },
-    { label: "LinkedIn", href: portfolioData.socials.linkedin, className: "contact-link" }
+    { label: "Email Me", href: "mailto:jatinkumar_24bd048@gmail.com", className: "contact-link primary" },
+    { label: "WhatsApp", href: "https://wa.me/918053046168", className: "contact-link" },
+    { label: "+91 8685862460", href: "tel:+918685862460", className: "contact-link" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/jatin-kumar030051611", className: "contact-link" }
   ].forEach((item) => {
     const link = create("a", item.className, item.label);
     link.href = normalizeLink(item.href);
