@@ -99,10 +99,11 @@ const portfolioData = {
     ]
   },
   artworks: [
-    "./public/portraits/art1.png",
-    "./public/portraits/art2.png",
-    "./public/portraits/art3.png",
-    "./public/portraits/art4.png"
+    { src: "./public/projects/sketches/girl sketch.png", title: "Girl Portrait" },
+    { src: "./public/projects/sketches/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
+    { src: "./public/projects/sketches/rahul sir sketch.png", title: "Rahul Sir Portrait" },
+    { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
+    { src: "./public/projects/sketches/girl sketch 1.png", title: "Girl Portrait II" }
   ],
   footer: {
     copyright: "© 2026 John Doe. All rights reserved.",
@@ -373,17 +374,17 @@ function renderArt() {
 
   const lightboxImg = lightbox.querySelector("img");
 
-  portfolioData.artworks.forEach((src, index) => {
+  portfolioData.artworks.forEach((artwork, index) => {
     const card = create("article", "art-card reveal visible");
     const img = create("img");
-    img.src = src;
-    img.alt = `Portrait or Illustration ${index + 1}`;
+    img.src = artwork.src;
+    img.alt = artwork.title || `Portrait ${index + 1}`;
     img.loading = "lazy";
     
     card.appendChild(img);
     
     card.addEventListener("click", () => {
-      lightboxImg.src = src;
+      lightboxImg.src = artwork.src;
       lightbox.classList.add("active");
     });
     
