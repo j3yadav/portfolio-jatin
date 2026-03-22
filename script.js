@@ -132,8 +132,8 @@ const create = (tag, className, text) => {
 };
 
 function normalizeLink(value) {
-  if (!value || value === "#") return "#";
-  if (/^https?:\/\//i.test(value) || /^mailto:/i.test(value)) return value;
+  if (!value || value === "#" || value.startsWith("javascript:")) return value;
+  if (/^https?:\/\//i.test(value) || /^mailto:/i.test(value) || /^tel:/i.test(value)) return value;
   return `https://${value}`;
 }
 
@@ -418,12 +418,20 @@ function renderContact() {
   [
     { label: "Email Me", href: "mailto:jatinkumar_24bd048@gmail.com", className: "contact-link primary" },
     { label: "WhatsApp", href: "https://wa.me/918053046168", className: "contact-link" },
-    { label: "+91 8685862460", href: "tel:+918685862460", className: "contact-link" },
+    { label: "Phone", href: "javascript:void(0)", className: "contact-link", copyText: "+91 8685862460" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/jatin-kumar030051611", className: "contact-link" }
   ].forEach((item) => {
     const link = create("a", item.className, item.label);
     link.href = normalizeLink(item.href);
-    if (item.href && item.href.startsWith("http")) {
+    if (item.copyText) {
+      link.addEventListener("click", () => {
+        navigator.clipboard.writeText(item.copyText).then(() => {
+          const original = link.textContent;
+          link.textContent = "Copied!";
+          setTimeout(() => link.textContent = original, 2000);
+        });
+      });
+    } else if (item.href && item.href.startsWith("http")) {
       link.target = "_blank";
       link.rel = "noreferrer";
     }
