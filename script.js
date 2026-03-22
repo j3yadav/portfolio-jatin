@@ -104,7 +104,11 @@ const portfolioData = {
     { src: "./public/projects/sketches/premanand ji sketch.png", title: "Premanand Ji Portrait" },
     { src: "./public/projects/sketches/rahul sir sketch.png", title: "Rahul Sir Portrait" },
     { src: "./public/projects/sketches/william defoe.png", title: "William Defoe Portrait" },
-    { src: "./public/projects/sketches/girl sketch 1.png", title: "Girl Portrait II" }
+    { src: "./public/projects/digital sketches/SDEE CARTOON1.png", title: "SDEE Cartoon" },
+    { src: "./public/projects/digital sketches/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
+    { src: "./public/projects/digital sketches/bathroom brush.png", title: "Bathroom Brush" },
+    { src: "./public/projects/digital sketches/drill.png", title: "Drill" },
+    { src: "./public/projects/digital sketches/hairdryer.jpg", title: "Hairdryer" }
   ],
   footer: {
     copyright: "© 2026 John Doe. All rights reserved.",
