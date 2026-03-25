@@ -42,7 +42,7 @@
   const groups = {};
   project.files.forEach(f => {
     /* Derive group key from path: everything between the project folder and the filename */
-    const prefix = `public/projects/${project.id}/`;
+    const prefix = `/projects/${project.id}/`;
     const rel = f.path.startsWith(prefix) ? f.path.slice(prefix.length) : f.path;
     const lastSlash = rel.lastIndexOf('/');
     const group = lastSlash > 0 ? rel.slice(0, lastSlash) : '(root)';
