@@ -268,7 +268,10 @@ function renderProjects() {
   container.innerHTML = "";
   
   if (typeof PROJECTS !== 'undefined') {
-    PROJECTS.forEach((proj, index) => {
+    const excludeFromHome = ["animaton", "sketches", "posters", "3d modeling"];
+    const featuredProjects = PROJECTS.filter(proj => !excludeFromHome.includes(proj.id));
+    
+    featuredProjects.forEach((proj, index) => {
       const card = create("a", "project-card reveal visible");
       card.href = `project.html#${encodeURIComponent(proj.id)}`;
       card.style.setProperty('--delay', `${index * 0.05}s`);
