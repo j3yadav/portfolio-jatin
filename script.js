@@ -18,29 +18,23 @@ const portfolioData = {
     phone: "tel:+918685862460"
   },
   skills: [
-    { name: "Adobe Photoshop", image: "/icons/photoshop.png" },
-    { name: "Adobe Illustrator", image: "/icons/illustrator.png" },
-    { name: "Adobe InDesign", image: "/icons/indesign.png" },
-    { name: "Adobe Premiere Pro", image: "/icons/premiere.png" },
-    { name: "Adobe After Effects", image: "/icons/after effects.png" },
-    { name: "Blender", image: "/icons/blender.png" },
-    { name: "Rhino 8", image: "/icons/rhino 8.webp" },
-    { name: "AutoCAD", image: "/icons/autocad.png" },
-    { name: "SolidWorks", image: "/icons/solid works.png" },
-    { name: "Figma", image: "/icons/figma.png" }
+    { name: "Adobe Photoshop", image: "public/icons/photoshop.png" },
+    { name: "Adobe Illustrator", image: "public/icons/illustrator.png" },
+    { name: "Adobe InDesign", image: "public/icons/indesign.png" },
+    { name: "Adobe Premiere Pro", image: "public/icons/premiere.png" },
+    { name: "Adobe After Effects", image: "public/icons/after effects.png" },
+    { name: "Blender", image: "public/icons/blender.png" },
+    { name: "Rhino 8", image: "public/icons/rhino 8.webp" },
+    { name: "AutoCAD", image: "public/icons/autocad.png" },
+    { name: "SolidWorks", image: "public/icons/solid works.png" },
+    { name: "Figma", image: "public/icons/figma.png" }
   ],
   experience: [
     {
       title: "Visual Design Intern",
       company: "Divine Lab, IIT Delhi",
       period: "15 July 2025 - 15 October 2025",
-      description: `
-        <ul class="experience-bullets">
-          <li>Developed user-focused visuals and enhanced creative design methodologies across innovative interfaces.</li>
-          <li>Led R&D on <strong>gamification in UX</strong>, engineering intuitive and interactive learning experiences.</li>
-          <li>Conceptualized and illustrated a custom <strong>brand mascot</strong> to anchor the project's visual identity.</li>
-        </ul>
-      `,
+      description: "Visual Design Intern at Divine Lab, IIT Delhi, enhancing creative design skills, developing user-focused visuals, and contributing to innovative projects. Worked on research and development of learning resources on gamification in UX, focusing on making the learning experience more engaging, and played a key role in designing a mascot to enhance the visual identity and interactivity of the resource.",
       highlight: true
     }
   ],
@@ -177,6 +171,7 @@ function renderHero() {
 
 function buildSkillItem(skill) {
   const item = create("div", "skill-chip");
+  item.setAttribute("data-tooltip", skill.name);
   item.setAttribute("aria-label", skill.name);
   item.setAttribute("title", skill.name);
 
@@ -191,22 +186,30 @@ function buildSkillItem(skill) {
     iconWrap.innerHTML = skillIconMarkup(skill.icon);
   }
   
-  const label = create("span", "skill-label", skill.name);
-  
   item.appendChild(iconWrap);
-  item.appendChild(label);
   return item;
 }
 
 function renderSkills() {
   const container = qs("#skills-grid");
-  if (!container) return;
   container.innerHTML = "";
-  container.className = "skills-static-grid reveal visible";
 
-  portfolioData.skills.forEach((skill) => {
-    container.appendChild(buildSkillItem(skill));
-  });
+  const panel = create("div", "skills-panel reveal visible");
+  const viewport = create("div", "skills-marquee");
+  const track = create("div", "skills-track");
+
+  // Create 6 identical rows for ultra-wide screen seamless looping
+  for (let i = 0; i < 6; i++) {
+    const row = create("div", "skills-row");
+    portfolioData.skills.forEach((skill) => {
+      row.appendChild(buildSkillItem(skill));
+    });
+    track.appendChild(row);
+  }
+
+  viewport.appendChild(track);
+  panel.appendChild(viewport);
+  container.appendChild(panel);
 }
 
 function renderExperience() {
@@ -218,7 +221,7 @@ function renderExperience() {
     meta.appendChild(create("span", "period", job.period));
     card.appendChild(meta);
     card.appendChild(create("p", "company", job.company));
-    card.appendChild(create("div", "timeline-desc", job.description));
+    card.appendChild(create("p", "", job.description));
     container.appendChild(card);
   });
 }
@@ -265,8 +268,8 @@ function renderProjects() {
   container.innerHTML = "";
   
   if (typeof PROJECTS !== 'undefined') {
-    const excludeFromHome = ["animaton", "sketches", "posters", "3d modeling"];
-    const featuredProjects = PROJECTS.filter(proj => !excludeFromHome.includes(proj.id));
+    const hiddenOnHome = ["animaton", "sketches", "posters", "3d modeling"];
+    const featuredProjects = PROJECTS.filter(p => !hiddenOnHome.includes(p.id));
     
     featuredProjects.forEach((proj, index) => {
       const card = create("a", "project-card reveal visible");
@@ -278,11 +281,6 @@ function renderProjects() {
       
       const header = create("div", "project-card-header");
       header.appendChild(create("h3", "", proj.title));
-      
-      if (proj.description) {
-        const desc = create("p", "project-card-desc", proj.description);
-        header.appendChild(desc);
-      }
       
       const visual = create("div", "project-card-visual");
       if (thumbSrc) {
@@ -489,7 +487,7 @@ function setupMenu() {
 
 function setupScrollState() {
   const topbar = qs("#topbar");
-  const navButtons = [...document.querySelectorAll(".nav-link"), ...document.querySelectorAll(".mobile-nav-link")];
+  const navButtons = [...document.querySelectorAll(".nav-link")];
   const sections = ["about", "skills", "experience", "education", "projects", "portraits", "hobbies", "resume", "contact"]
     .map((id) => document.getElementById(id))
     .filter(Boolean);
