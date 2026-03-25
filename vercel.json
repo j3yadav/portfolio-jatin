@@ -1,9 +1,15 @@
 {
-  "buildCommand": "",
+  "buildCommand": "git lfs pull",
   "outputDirectory": ".",
   "cleanUrls": false,
   "trailingSlash": false,
-  "rewrites": [],
+  "rewrites": [
+    { "source": "/icons/(.*)", "destination": "/public/icons/$1" },
+    { "source": "/thumbnails/(.*)", "destination": "/public/thumbnails/$1" },
+    { "source": "/projects/(.*)", "destination": "/public/projects/$1" },
+    { "source": "/portraits/(.*)", "destination": "/public/portraits/$1" },
+    { "source": "/bg/(.*)", "destination": "/public/bg/$1" }
+  ],
   "headers": [
     {
       "source": "/public/(.*)",
