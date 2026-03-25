@@ -271,8 +271,6 @@ function renderProjects() {
     PROJECTS.forEach((proj, index) => {
       const card = create("a", "project-card reveal visible");
       card.href = `project.html#${encodeURIComponent(proj.id)}`;
-      card.target = "_blank";
-      card.rel = "noreferrer";
       card.style.setProperty('--delay', `${index * 0.05}s`);
       
       const thumbSrc = proj.thumbnail ? proj.thumbnail : (proj.files.find(f => f.type === 'image')?.path ?? null);
