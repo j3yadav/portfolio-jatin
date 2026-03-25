@@ -7,7 +7,7 @@ const PROJECTS = [
     id: "3d modeling",
     title: "3D Modeling",
     description: "3D rendered objects including brush holders, chargers, lamps, pet feeders, and sci-fi containers.",
-    thumbnail: "public/projects/3d modeling/brush holder.jpg",
+    thumbnail: "public/thumbnails/3d models.png",
     files: [
       { path: "public/projects/3d modeling/brush holder.jpg", type: "image", name: "Brush Holder" },
       { path: "public/projects/3d modeling/brush holder with all evee 2.png", type: "image", name: "Brush Holder (Eevee Render)" },
@@ -24,7 +24,7 @@ const PROJECTS = [
     id: "animaton",
     title: "Animation",
     description: "2D and 3D animations including flip books, boat animation, fire animation, and walk cycles.",
-    thumbnail: null,
+    thumbnail: "public/thumbnails/animation.png",
     files: [
       { path: "public/projects/animaton/Flip book .mp4", type: "video", name: "Flip Book" },
       { path: "public/projects/animaton/boat animation with sfx.mp4", type: "video", name: "Boat Animation with SFX" },
@@ -38,7 +38,7 @@ const PROJECTS = [
     id: "bashoda product",
     title: "Bashoda Product Design",
     description: "Product design project for Bashoda — includes presentation, 3D renders, and design documentation.",
-    thumbnail: "public/projects/bashoda product/r1.png",
+    thumbnail: "public/thumbnails/bashoda.png",
     files: [
       { path: "public/projects/bashoda product/BASHODA PPT.pdf", type: "pdf", name: "Bashoda PPT" },
       { path: "public/projects/bashoda product/r1.png", type: "image", name: "Render 1" },
@@ -80,7 +80,7 @@ const PROJECTS = [
     id: "dmm final project",
     title: "DMM Final Project",
     description: "Design, Manufacturing & Materials final project — research report and supporting renders.",
-    thumbnail: null,
+    thumbnail: "public/thumbnails/brush holder with all.png",
     files: [
       { path: "public/projects/dmm final project/dmm final jatin kumar.pdf", type: "pdf", name: "DMM Final Report" },
       { path: "public/projects/dmm final project/all/brush holder final render.png", type: "image", name: "Brush Holder Render" },
@@ -102,7 +102,7 @@ const PROJECTS = [
     id: "dp 1",
     title: "Design Project 1",
     description: "Design Project 1 — animated short film 'Last Flight' with supporting assets and storyboards.",
-    thumbnail: null,
+    thumbnail: "public/thumbnails/last flight.png",
     files: [
       { path: "public/projects/dp 1/Last Flight - An Animated Short Film.mp4", type: "video", name: "Last Flight — Animated Short Film" },
       { path: "public/projects/dp 1/all data/[storyboard_hit_2[1][1[1].jpg", type: "image", name: "Storyboard Hit 1" },
@@ -129,7 +129,7 @@ const PROJECTS = [
     id: "dp 2",
     title: "Design Project 2",
     description: "Design Project 2 — product design with CAD blueprints, branding, 3D models, and final presentation.",
-    thumbnail: "public/projects/dp 2/3d model.png",
+    thumbnail: "public/thumbnails/grass hopper.png",
     files: [
       { path: "public/projects/dp 2/3d model.png", type: "image", name: "3D Model" },
       { path: "public/projects/dp 2/cover designs.png", type: "image", name: "Cover Designs" },
@@ -153,7 +153,7 @@ const PROJECTS = [
     id: "dp3",
     title: "Design Project 3",
     description: "Design Project 3 — complete product design presentation covering research, renders, sketches, and technical drawings.",
-    thumbnail: "public/projects/dp3/dtu logo@2x.png",
+    thumbnail: "public/thumbnails/scrubix.png",
     files: [
       { path: "public/projects/dp3/dp 3 ppt.pdf", type: "pdf", name: "Design Project 3 Presentation" }
     ]
@@ -172,7 +172,7 @@ const PROJECTS = [
     id: "self branding logo design",
     title: "Self Branding & Logo Design",
     description: "Personal branding project — logo creation, mockups, and brand presentation.",
-    thumbnail: "public/projects/self branding logo design/Artboard 1@2x.png",
+    thumbnail: "public/thumbnails/branding.png",
     files: [
       { path: "public/projects/self branding logo design/Artboard 1@2x.png", type: "image", name: "Logo Design 1" },
       { path: "public/projects/self branding logo design/Artboard 2@2x.png", type: "image", name: "Logo Design 2" },
