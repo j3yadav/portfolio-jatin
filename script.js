@@ -18,16 +18,16 @@ const portfolioData = {
     phone: "tel:+918685862460"
   },
   skills: [
-    { name: "Adobe Photoshop", image: "./public/icons/photoshop.png" },
-    { name: "Adobe Illustrator", image: "./public/icons/illustrator.png" },
-    { name: "Adobe InDesign", image: "./public/icons/indesign.png" },
-    { name: "Adobe Premiere Pro", image: "./public/icons/premiere.png" },
-    { name: "Adobe After Effects", image: "./public/icons/after-effects.png" },
-    { name: "Blender", image: "./public/icons/blender.png" },
-    { name: "Rhino 8", image: "./public/icons/rhino-8.webp" },
-    { name: "AutoCAD", image: "./public/icons/autocad.png" },
-    { name: "SolidWorks", image: "./public/icons/solid-works.png" },
-    { name: "Figma", image: "./public/icons/figma.png" }
+    { name: "Adobe Photoshop", image: "/icons/photoshop.png" },
+    { name: "Adobe Illustrator", image: "/icons/illustrator.png" },
+    { name: "Adobe InDesign", image: "/icons/indesign.png" },
+    { name: "Adobe Premiere Pro", image: "/icons/premiere.png" },
+    { name: "Adobe After Effects", image: "/icons/after-effects.png" },
+    { name: "Blender", image: "/icons/blender.png" },
+    { name: "Rhino 8", image: "/icons/rhino-8.webp" },
+    { name: "AutoCAD", image: "/icons/autocad.png" },
+    { name: "SolidWorks", image: "/icons/solid-works.png" },
+    { name: "Figma", image: "/icons/figma.png" }
   ],
   experience: [
     {
@@ -267,8 +267,8 @@ function renderProjects() {
   container.innerHTML = "";
   
   if (typeof PROJECTS !== 'undefined') {
-    const hiddenOnHome = ["animaton", "sketches", "posters", "3d modeling"];
-    const featuredProjects = PROJECTS.filter(p => !hiddenOnHome.includes(p.id));
+    const hiddenOnHome = ["animaton", "animation", "sketches", "posters", "3d modeling", "digital sketches", "portraits"];
+    const featuredProjects = PROJECTS.filter(p => !hiddenOnHome.includes(p.id.toLowerCase()));
     
     featuredProjects.forEach((proj, index) => {
       const card = create("a", "project-card reveal visible");
