@@ -7,7 +7,7 @@ const PROJECTS = [
     id: "3d modeling",
     title: "3D Modeling",
     description: "3D rendered objects including brush holders, chargers, lamps, pet feeders, and sci-fi containers.",
-    thumbnail: "/thumbnails/3d models.png",
+    thumbnail: "/thumbnails/3d-models.png",
     files: [
       { path: "/projects/3d modeling/brush holder.jpg", type: "image", name: "Brush Holder" },
       { path: "/projects/3d modeling/brush holder with all evee 2.png", type: "image", name: "Brush Holder (Eevee Render)" },
@@ -102,7 +102,7 @@ const PROJECTS = [
     id: "dp 1",
     title: "Design Project 1",
     description: "Design Project 1 — animated short film 'Last Flight' with supporting assets and storyboards.",
-    thumbnail: "/thumbnails/last flight.png",
+    thumbnail: "/thumbnails/last-flight.png",
     files: [
       { path: "/projects/dp 1/Last Flight - An Animated Short Film.mp4", type: "video", name: "Last Flight — Animated Short Film" },
       { path: "/projects/dp 1/all data/[storyboard_hit_2[1][1[1].jpg", type: "image", name: "Storyboard Hit 1" },
@@ -129,7 +129,7 @@ const PROJECTS = [
     id: "dp 2",
     title: "Design Project 2",
     description: "Design Project 2 — product design with CAD blueprints, branding, 3D models, and final presentation.",
-    thumbnail: "/thumbnails/grass hopper.png",
+    thumbnail: "/thumbnails/grass-hopper.png",
     files: [
       { path: "/projects/dp 2/3d model.png", type: "image", name: "3D Model" },
       { path: "/projects/dp 2/cover designs.png", type: "image", name: "Cover Designs" },

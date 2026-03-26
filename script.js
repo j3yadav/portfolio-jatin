@@ -6,7 +6,7 @@ const portfolioData = {
     bio: [
       "A hardworking and imaginative product design student passionate about refining everyday experiences and solving real-world problems through design."
     ],
-    profileImage: "./jatin.png",
+    profileImage: "/portraits/jatin-kumar.png",
     email: "john.doe@example.com",
     resumeUrl: "https://drive.google.com/file/d/1a6pXT58aY2wYgQ8AFj8gfCgw7V39KrZa/view?usp=sharing"
   },
@@ -18,16 +18,16 @@ const portfolioData = {
     phone: "tel:+918685862460"
   },
   skills: [
-    { name: "Adobe Photoshop", image: "public/icons/photoshop.png" },
-    { name: "Adobe Illustrator", image: "public/icons/illustrator.png" },
-    { name: "Adobe InDesign", image: "public/icons/indesign.png" },
-    { name: "Adobe Premiere Pro", image: "public/icons/premiere.png" },
-    { name: "Adobe After Effects", image: "public/icons/after effects.png" },
-    { name: "Blender", image: "public/icons/blender.png" },
-    { name: "Rhino 8", image: "public/icons/rhino 8.webp" },
-    { name: "AutoCAD", image: "public/icons/autocad.png" },
-    { name: "SolidWorks", image: "public/icons/solid works.png" },
-    { name: "Figma", image: "public/icons/figma.png" }
+    { name: "Adobe Photoshop", image: "./public/icons/photoshop.png" },
+    { name: "Adobe Illustrator", image: "./public/icons/illustrator.png" },
+    { name: "Adobe InDesign", image: "./public/icons/indesign.png" },
+    { name: "Adobe Premiere Pro", image: "./public/icons/premiere.png" },
+    { name: "Adobe After Effects", image: "./public/icons/after-effects.png" },
+    { name: "Blender", image: "./public/icons/blender.png" },
+    { name: "Rhino 8", image: "./public/icons/rhino-8.webp" },
+    { name: "AutoCAD", image: "./public/icons/autocad.png" },
+    { name: "SolidWorks", image: "./public/icons/solid-works.png" },
+    { name: "Figma", image: "./public/icons/figma.png" }
   ],
   experience: [
     {
@@ -100,14 +100,14 @@ const portfolioData = {
     ]
   },
   artworks: [
-    { src: "./public/portraits/girl sketch.png", title: "Girl Portrait" },
-    { src: "./public/portraits/pedro pascle sketch.png", title: "Pedro Pascal Portrait" },
-    { src: "./public/portraits/premanand ji sketch.png", title: "Premanand Ji Portrait" },
-    { src: "./public/portraits/rahul sir sketch.png", title: "Rahul Sir Portrait" },
-    { src: "./public/portraits/william defoe.png", title: "William Defoe Portrait" },
-    { src: "./public/portraits/SDEE CARTOON1.png", title: "SDEE Cartoon" },
-    { src: "./public/portraits/WhatsApp Image 2025-07-12 at 13.34.48_c0ca2d89.jpg", title: "Digital Illustration" },
-    { src: "./public/portraits/bathroom brush.png", title: "Bathroom Brush" }
+    { src: "/portraits/girl-sketch.png", title: "Girl Portrait" },
+    { src: "/portraits/pedro-pascal-sketch.png", title: "Pedro Pascal Portrait" },
+    { src: "/portraits/premanand-ji-sketch.png", title: "Premanand Ji Portrait" },
+    { src: "/portraits/rahul-sir-sketch.png", title: "Rahul Sir Portrait" },
+    { src: "/portraits/william-defoe.png", title: "William Defoe Portrait" },
+    { src: "/portraits/sdee-cartoon-1.png", title: "SDEE Cartoon" },
+    { src: "/portraits/digital-illustration.jpg", title: "Digital Illustration" },
+    { src: "/portraits/bathroom-brush.png", title: "Bathroom Brush" }
   ],
   footer: {
     copyright: "© 2026 Jatin Kumar. All rights reserved.",
@@ -171,9 +171,7 @@ function renderHero() {
 
 function buildSkillItem(skill) {
   const item = create("div", "skill-chip");
-  item.setAttribute("data-tooltip", skill.name);
   item.setAttribute("aria-label", skill.name);
-  item.setAttribute("title", skill.name);
 
   const iconWrap = create("div", "skill-icon-wrap");
   
@@ -186,7 +184,10 @@ function buildSkillItem(skill) {
     iconWrap.innerHTML = skillIconMarkup(skill.icon);
   }
   
+  const label = create("span", "skill-label", skill.name);
+  
   item.appendChild(iconWrap);
+  item.appendChild(label);
   return item;
 }
 
@@ -198,13 +199,11 @@ function renderSkills() {
   const viewport = create("div", "skills-marquee");
   const track = create("div", "skills-track");
 
-  // Create 6 identical rows for ultra-wide screen seamless looping
-  for (let i = 0; i < 6; i++) {
-    const row = create("div", "skills-row");
+  // Repeat the list once to create a seamless infinite loop (Original + Clone)
+  for (let i = 0; i < 2; i++) {
     portfolioData.skills.forEach((skill) => {
-      row.appendChild(buildSkillItem(skill));
+      track.appendChild(buildSkillItem(skill));
     });
-    track.appendChild(row);
   }
 
   viewport.appendChild(track);
@@ -538,6 +537,7 @@ function init() {
 }
 
 init();
+
 
 
 
